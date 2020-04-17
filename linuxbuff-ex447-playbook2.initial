@@ -1,0 +1,19 @@
+---
+- name: LinuxBuff EX447 Sample Exam Playbook 2
+  hosts:
+  become: True
+
+
+
+  tasks:
+
+
+  - name: Ensure nginx automatically starts at boot
+
+  - name: Ensure nginx is accessible remotely
+
+  - name: Create page linuxbuff.html
+
+  - name: Create page status.html
+
+  - name: Create page random.html

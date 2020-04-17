@@ -1,0 +1,16 @@
+---
+- name: LinuxBuff EX447 Sample Exam Playbook 1
+  hosts: all
+  become: True
+
+  tasks:
+
+
+  - name: list contents of sysconfig on the localhost
+
+
+  - name: Create /tmp/file1 on group webservers
+
+
+  - name: Create /tmp/file2 on group prodservers
+

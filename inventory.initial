@@ -1,0 +1,6 @@
+[webservers]
+node2
+
+
+[prodservers]
+node3

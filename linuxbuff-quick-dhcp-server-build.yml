@@ -1,0 +1,39 @@
+---
+- name: Linuxbuff Quick Start DHCP Server Build
+  hosts: dhcp
+
+
+  vars:
+  - cfgfile: 'files/dhcpd.conf'
+
+
+  tasks:
+  - name: Install dhcp software
+    yum:
+      name: dhcp
+      state: present
+
+
+  - name: Deliver config file
+    copy:
+      src: "{{ cfgfile }}"
+      dest: /etc/dhcp/dhcpd.conf
+    notify: Restart Service
+
+
+  - name: Open Firewall
+    firewalld:
+      service: dhcp
+      permanent: yes
+      state: enabled
+
+
+
+
+
+  handlers:
+
+  - name: Restart Service
+    systemd:
+      name: dhcpd
+      state: restarted

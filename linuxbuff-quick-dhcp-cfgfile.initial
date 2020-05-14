@@ -1,0 +1,37 @@
+# dhcpd.conf
+#
+# LinuxBuff Customised configuration file
+#
+
+# Let's ONLY listen on KVM libvirt network
+option domain-name "example.net";
+option domain-name-servers 192.168.122.1;
+
+default-lease-time 600;
+max-lease-time 7200;
+
+# syslog
+log-facility local7;
+
+
+
+# Define a subnet
+subnet 192.168.122.0 netmask 255.255.255.0 {
+        option routers                  192.168.122.1;
+        option subnet-mask              255.255.255.0;
+        option domain-search            "blue.example.net";
+        option domain-name-servers      192.168.122.1;
+        range   192.168.122.110   192.168.122.120;
+}
+
+
+# Define a PXE boot client
+# 192.168.122.42 is IP of my Foreman Installation
+host client.blue.example.net {
+  hardware ethernet 52:54:00:23:70:ec;
+  fixed-address 192.168.122.63;
+  next-server 192.168.122.42;
+  filename "pxelinux.0";
+}
+
+#

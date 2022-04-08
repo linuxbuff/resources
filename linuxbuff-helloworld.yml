@@ -1,0 +1,11 @@
+---
+- name: LinuxBuff Hello World Playbook
+  hosts: localhost
+  become: True
+
+  tasks:
+
+  - name: Hello World
+    copy:
+      dest: /helloworld.txt
+      content: "Hello World!\n"
